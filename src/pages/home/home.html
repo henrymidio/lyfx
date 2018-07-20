@@ -1,14 +1,31 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
+<ion-header color="light">
+  <ion-navbar mode="md">
+    <ion-toolbar>
+      <ion-searchbar mode="md" placeholder="Search" animated="true"></ion-searchbar>
+    </ion-toolbar>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content>
+  <h1 padding-left>Explore Adventures</h1>
+  <ion-grid no-padding>
+    <ion-row>
+      <ion-col col-6 *ngFor="let adventure of adventures | async">
+        <ion-card>
+          <img [src]="adventure.gallery[0].image"/>
+          <p class="card-title">{{ adventure.adventures | uppercase }}</p>
+          <p class="color-black">{{ adventure.destinyCity }}, {{ adventure.destinyState }}</p>
+          <p>U${{ adventure.price }}</p>
+          <div class="avaliacao">
+            <ion-icon name="star"></ion-icon>
+            <ion-icon name="star"></ion-icon>
+            <ion-icon name="star"></ion-icon>
+            <ion-icon name="star"></ion-icon>
+            <ion-icon name="star"></ion-icon>
+            <span style="font-size: 1.1rem">• 0 reviews</span>
+          </div>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
